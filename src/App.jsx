@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
-import MainLayout from "./pages/layout/MainLayout";
+import MainLayout from "./layout/MainLayout";
 
-// page
+// pages
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import SingleProduct from "./pages/SingleProduct";
-
 function App() {
-    const routes = createBrowserRouter([
+    const routers = createBrowserRouter([
         {
             path: "/",
             element: <MainLayout />,
@@ -17,13 +17,21 @@ function App() {
                     element: <Home />,
                 },
                 {
-                    path: "/singleProduct/:id",
+                    path: "/about",
+                    element: <About />,
+                },
+                {
+                    path: "/contact",
+                    element: <Contact />,
+                },
+                {
+                    path: "/singleproduct/:id",
                     element: <SingleProduct />,
                 },
             ],
         },
     ]);
-    return <RouterProvider router={routes} />;
+    return <RouterProvider router={routers} />;
 }
 
 export default App;

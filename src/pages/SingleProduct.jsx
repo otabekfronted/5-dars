@@ -1,5 +1,6 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import InfoProduct from "../components/InfoProduct";
 
 function SingleProduct() {
     const { id } = useParams();
@@ -10,15 +11,14 @@ function SingleProduct() {
             .then((data) => data.json())
             .then((product) => setProduct(product))
             .catch((error) => console.log(error));
-    }, []);
-    console.log(product);
+    }, [id]);
+
     return (
         <>
-            {product && (
-                <div>
-                    <h3>{product.title}</h3>
-                </div>
-            )}
+            {product && <InfoProduct />}
+            <Link to="/">
+                <button>Go to home</button>
+            </Link>
         </>
     );
 }
